@@ -46,7 +46,10 @@ section.block{padding:75px 7%;scroll-margin-top:80px}
 .card p{color:var(--muted);font-size:13px;line-height:1.8}
 .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .profile{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
-.photo{min-height:400px;background:linear-gradient(0deg,#08090d55,transparent),url('https://commons.wikimedia.org/wiki/Special:FilePath/Lionel_Messi_20180626.jpg') center 25%/cover no-repeat;border:1px solid var(--line)}
+
+/* UPDATED: MESSI WORLD CUP 2022 PHOTO */
+.photo{min-height:400px;background:linear-gradient(0deg,#08090d55,transparent),url('https://commons.wikimedia.org/wiki/Special:FilePath/Lionel_Messi_WC2022.jpg') center 25%/cover no-repeat;border:1px solid var(--line)}
+
 .copy p{color:#b7bac5;font-size:14px;line-height:1.95;margin-top:16px}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
 .chip{border:1px solid var(--line);padding:9px 12px;font-size:11px;color:#ddd}
@@ -122,7 +125,7 @@ footer p{color:#858895;font-size:11px;line-height:1.8;margin-top:12px}
 
 <section class="block" id="bio">
  <div class="profile">
-  <div class="photo" role="img" aria-label="Lionel Messi photograph">
+  <div class="photo" role="img" aria-label="Lionel Messi at the 2022 FIFA World Cup">
   </div>
   <div class="copy">
    <div class="heading">
@@ -251,7 +254,7 @@ footer p{color:#858895;font-size:11px;line-height:1.8;margin-top:12px}
  <div class="heading">
   <div class="kicker">CINEMATIC MODE</div>
   <h2>Background Music</h2>
-  <p>Upload your chosen phonk track as <b>phonk.mp3</b> in the same repository folder as this file.</p>
+  <p>Upload your chosen phonk track as <b>Phonk.mp3</b> in the same repository folder as this file.</p>
  </div>
  <div class="music-panel">
   <div><h3>♫ MESSI PHONK EXPERIENCE</h3><p>Loop mode · Play or pause whenever you want</p></div>
@@ -261,7 +264,7 @@ footer p{color:#858895;font-size:11px;line-height:1.8;margin-top:12px}
   </div>
  </div>
  <div class="music-status" id="musicStatus" aria-live="polite">Tap PLAY to start music.</div>
- <audio id="bgMusic" src="phonk.mp3" loop preload="none"></audio>
+ <audio id="bgMusic" src="Phonk.mp3" loop preload="none"></audio>
 </section>
 
 <footer>
@@ -346,7 +349,7 @@ async function startMusic(){
   await music.play();
   statusText.textContent = "♫ Music is playing. Enjoy the vibe!";
  }catch(e){
-  statusText.textContent = "Playback blocked or file missing. Tap PLAY again and check phonk.mp3.";
+  statusText.textContent = "Playback blocked or file missing. Tap PLAY again and check Phonk.mp3.";
  }
 }
 function stopMusic(){
@@ -358,7 +361,7 @@ pauseButton.addEventListener("click",stopMusic);
 heroButton.addEventListener("click",()=>music.paused ? startMusic() : stopMusic());
 music.addEventListener("play",updateButtons);
 music.addEventListener("pause",updateButtons);
-music.addEventListener("error",()=>statusText.textContent="Music file not found. Upload phonk.mp3 beside index.html.");
+music.addEventListener("error",()=>statusText.textContent="Music file not found. Upload Phonk.mp3 beside index.html.");
 
 window.addEventListener("load",()=>startMusic());
 </script>
