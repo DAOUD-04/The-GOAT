@@ -569,32 +569,65 @@ searchInput.addEventListener("input", renderSeasons);
 sortSelect.addEventListener("change", renderSeasons);
 renderSeasons();
 
+
 /* MUSIC CONTROLS */
 const music = document.getElementById("bgMusic");
 const musicStatus = document.getElementById("musicStatus");
+const playButton = document.getElementById("playMusic");
+const pauseButton = document.getElementById("pauseMusic");
+const heroButton = document.getElementById("heroMusicBtn");
+
+function updateMusicButtons() {
+  if (music.paused) {
+    playButton.textContent = "▶ PLAY";
+    heroButton.textContent = "▶ PLAY PHONK";
+    musicStatus.textContent = "Music paused.";
+  } else {
+    playButton.textContent = "⏸ PLAYING";
+    heroButton.textContent = "⏸ PAUSE PHONK";
+    musicStatus.textContent = "Phonk is playing. Enjoy the vibe.";
+  }
+}
 
 async function startMusic() {
   try {
     await music.play();
-    musicStatus.textContent = "Phonk is playing. Enjoy the vibe.";
   } catch (error) {
     musicStatus.textContent =
-      "Could not play music. Check that phonk.mp3 is uploaded beside index.html.";
+      "Tap PLAY to start music. Check phonk.mp3 if it doesn't work.";
   }
 }
+
 function stopMusic() {
   music.pause();
-  musicStatus.textContent = "Music paused.";
 }
 
-document.getElementById("playMusic").addEventListener("click", startMusic);
-document.getElementById("pauseMusic").addEventListener("click", stopMusic);
-document.getElementById("heroMusicBtn").addEventListener("click", startMusic);
+playButton.addEventListener("click", startMusic);
+heroButton.addEventListener("click", () => {
+  if (music.paused) {
+    startMusic();
+  } else {
+    stopMusic();
+  }
+});
+pauseButton.addEventListener("click", stopMusic);
+
+music.addEventListener("play", updateMusicButtons);
+music.addEventListener("pause", updateMusicButtons);
 
 music.addEventListener("error", () => {
   musicStatus.textContent =
-    "Music file not found. Upload phonk.mp3 to the same repository folder.";
+    "Music file not found. Upload phonk.mp3 beside index.html.";
 });
+
+// Try autoplay when the page opens
+window.addEventListener("load", () => {
+  startMusic();
+});
+
+
+
+
 </script>
 </body>
 </html>
