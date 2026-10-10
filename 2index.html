@@ -1,0 +1,600 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<title>Lionel Messi | The Immortal Legend</title>
+<meta name="description" content="A cinematic Lionel Messi fan website celebrating his career, goals, assists, trophies, records and legendary football journey.">
+
+<style>
+:root {
+  --bg:#080808;
+  --panel:#111111;
+  --gold:#dfc477;
+  --gold2:#a88a43;
+  --white:#f7f4ec;
+  --muted:#aaa59a;
+  --line:#30291b;
+}
+* {box-sizing:border-box}
+html {scroll-behavior:smooth;scroll-padding-top:85px}
+body {
+  margin:0;background:var(--bg);color:var(--white);
+  font-family:Arial,Helvetica,sans-serif;line-height:1.6;
+}
+a {color:inherit;text-decoration:none}
+button,input,select {font:inherit}
+button {cursor:pointer}
+.container {width:min(1180px,92%);margin:auto}
+.gold {color:var(--gold)}
+.muted {color:var(--muted)}
+.section {padding:78px 0}
+.section-title {font-size:clamp(30px,5vw,52px);line-height:1.1;margin:8px 0 16px}
+.section-intro {max-width:700px;color:var(--muted);margin:0 auto 32px}
+.eyebrow {
+  color:var(--gold);letter-spacing:4px;text-transform:uppercase;
+  font-size:11px;font-weight:bold;
+}
+.center {text-align:center}
+.btn {
+  display:inline-flex;align-items:center;justify-content:center;
+  gap:9px;padding:13px 20px;border:1px solid var(--gold);
+  border-radius:5px;color:var(--gold);background:transparent;
+  font-weight:bold;transition:.2s;
+}
+.btn:hover {background:var(--gold);color:#080808}
+.btn.filled {background:var(--gold);color:#080808}
+.btn.filled:hover {background:#f2d993}
+header {
+  position:sticky;top:0;z-index:100;
+  background:rgba(8,8,8,.94);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.nav {
+  min-height:68px;display:flex;align-items:center;
+  justify-content:space-between;gap:20px;
+}
+.logo {font-weight:900;letter-spacing:2px;font-size:20px}
+.logo span {color:var(--gold)}
+.nav-links {display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.nav-links a {font-size:12px;color:#ddd}
+.nav-links a:hover {color:var(--gold)}
+.menu-btn {display:none}
+.hero {
+  min-height:650px;display:flex;align-items:center;
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(ellipse at 75% 30%,rgba(177,137,48,.22),transparent 35%),
+    linear-gradient(110deg,#080808 10%,#111 58%,#20190c 100%);
+  border-bottom:1px solid var(--line);
+}
+.hero:after {
+  content:"10";position:absolute;right:4%;top:4%;
+  font-size:clamp(200px,40vw,470px);font-weight:900;
+  line-height:1;color:rgba(223,196,119,.045);
+  pointer-events:none;
+}
+.hero-content {position:relative;z-index:1;max-width:760px;padding:75px 0}
+.hero h1 {
+  font-size:clamp(48px,9vw,108px);line-height:.95;
+  letter-spacing:-4px;margin:22px 0;
+}
+.hero h1 span {display:block;color:var(--gold)}
+.hero p {color:#c2bdb2;max-width:590px;font-size:17px}
+.hero-actions {display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero-foot {
+  display:flex;gap:24px;flex-wrap:wrap;margin-top:45px;
+  color:var(--muted);font-size:12px;letter-spacing:1px;
+}
+.hero-foot strong {color:var(--gold)}
+.stats-grid {
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;
+}
+.stat-card,.card,.record-card,.trophy-card,.season-stat {
+  background:linear-gradient(145deg,#141414,#0d0d0d);
+  border:1px solid var(--line);border-radius:10px;
+}
+.stat-card {padding:23px 16px}
+.stat-card strong {
+  display:block;font-size:clamp(27px,4vw,42px);
+  color:var(--gold);line-height:1.15;
+}
+.stat-card span {display:block;color:var(--muted);font-size:11px;letter-spacing:1px;margin-top:9px}
+.stat-card small {color:#777;font-size:10px}
+.grid-3 {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.grid-2 {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.card {padding:23px}
+.card h3 {margin:0 0 10px}
+.card p {color:var(--muted);font-size:14px}
+.card .number {font-size:35px;font-weight:900;color:var(--gold)}
+.dark-section {background:#0d0d0d;border-top:1px solid #191919;border-bottom:1px solid #191919}
+.chips {display:flex;gap:9px;flex-wrap:wrap}
+.chip {
+  border:1px solid var(--line);background:#131313;
+  padding:10px 13px;border-radius:5px;font-size:12px;color:#e7dfcc;
+}
+.timeline {border-left:1px solid var(--gold2);margin:35px 0 0 8px;padding-left:25px}
+.timeline-item {position:relative;margin:0 0 28px}
+.timeline-item:before {
+  content:"";position:absolute;left:-31px;top:7px;
+  width:11px;height:11px;background:var(--gold);border-radius:50%;
+}
+.timeline-item strong {color:var(--gold)}
+.timeline-item p {margin:5px 0;color:var(--muted)}
+.table-controls {display:flex;gap:10px;flex-wrap:wrap;margin:25px 0}
+.table-controls input,.table-controls select {
+  min-width:0;flex:1;background:#141414;color:#fff;
+  border:1px solid var(--line);border-radius:6px;padding:12px;
+}
+.table-wrap {overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+table {border-collapse:collapse;width:100%;min-width:850px}
+th,td {padding:13px 12px;border-bottom:1px solid #252525;text-align:right;white-space:nowrap;font-size:12px}
+th {color:var(--gold);background:#151515;font-size:11px;letter-spacing:.5px}
+th:first-child,td:first-child {text-align:left}
+tbody tr:hover {background:#17150f}
+.filter-row {display:flex;gap:8px;flex-wrap:wrap}
+.filter-btn {
+  border:1px solid #423722;background:#121212;color:#eee;
+  border-radius:30px;padding:10px 16px;font-size:12px;
+}
+.filter-btn.active {background:var(--gold);color:#080808}
+.trophy-grid {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.trophy-card {padding:21px 13px;text-align:center}
+.trophy-icon {font-size:30px}
+.trophy-card strong {display:block;font-size:29px;color:var(--gold);margin-top:8px}
+.trophy-card span {display:block;color:var(--muted);font-size:11px}
+.records-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.record-card {padding:20px}
+.record-card strong {font-size:32px;color:var(--gold);display:block}
+.record-card span {font-size:13px;color:#c7c1b5}
+.music-box {
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:25px;border:1px solid var(--line);border-radius:10px;
+  background:linear-gradient(120deg,#17140d,#0e0e0e);
+}
+.music-box p {margin:5px 0;color:var(--muted);font-size:13px}
+.music-controls {display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+footer {border-top:1px solid var(--line);padding:35px 0;color:var(--muted);font-size:12px}
+footer .footer-inner {display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.note {font-size:11px;color:#8d887e;line-height:1.7;margin-top:18px}
+.back-top {
+  position:fixed;right:16px;bottom:16px;z-index:30;
+  width:43px;height:43px;border-radius:50%;border:1px solid var(--gold);
+  background:#14120d;color:var(--gold);font-size:20px;
+}
+[hidden] {display:none!important}
+@media(max-width:780px) {
+  .nav {padding:12px 0;align-items:flex-start}
+  .nav-links {gap:12px;justify-content:flex-end}
+  .nav-links a {font-size:10px}
+  .hero {min-height:570px}
+  .hero h1 {letter-spacing:-2px}
+  .stats-grid,.trophy-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid-3,.records-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+  .music-box {align-items:flex-start;flex-direction:column}
+}
+@media(max-width:470px) {
+  .nav {display:block}
+  .nav-links {margin-top:10px;justify-content:flex-start}
+  .hero-foot {gap:13px}
+  .grid-2,.grid-3,.records-grid {grid-template-columns:1fr}
+  .section {padding:55px 0}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#home">MESSI<span>.</span></a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#career">CAREER</a>
+      <a href="#stats">STATS</a>
+      <a href="#seasons">SEASONS</a>
+      <a href="#trophies">TROPHIES</a>
+      <a href="#records">RECORDS</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container hero-content">
+    <div class="eyebrow">ROSARIO · BARCELONA · THE WORLD</div>
+    <h1>THE<br><span>IMMORTAL</span> LEGEND.</h1>
+    <p>
+      More than football. A story of genius, perseverance and greatness.
+      Celebrating Lionel Messi — the magician who made the impossible look ordinary.
+    </p>
+    <div class="hero-actions">
+      <a class="btn filled" href="#stats">EXPLORE THE NUMBERS ↘</a>
+      <button class="btn" id="heroMusicBtn" type="button">▶ PLAY PHONK</button>
+    </div>
+    <div class="hero-foot">
+      <span><strong>10</strong> BARCELONA</span>
+      <span><strong>30</strong> INTER MIAMI</span>
+      <span><strong>10</strong> ARGENTINA</span>
+      <span>LA PULGA 🐐</span>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER TOTALS -->
+<section class="section" id="stats">
+  <div class="container">
+    <div class="center">
+      <div class="eyebrow">THE NUMBERS BEHIND THE LEGEND</div>
+      <h2 class="section-title">MESSI <span class="gold">BY THE NUMBERS</span></h2>
+      <p class="section-intro">
+        Career figures depend on the source, competition coverage and cut-off date.
+        These displayed figures are an editable reference snapshot, not a live feed.
+      </p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card"><strong id="careerApps">1,177</strong><span>APPEARANCES</span><small>Reference snapshot</small></div>
+      <div class="stat-card"><strong id="careerGoals">931</strong><span>CAREER GOALS</span><small>Senior official matches</small></div>
+      <div class="stat-card"><strong id="careerAssists">428</strong><span>CAREER ASSISTS</span><small>Source-dependent</small></div>
+      <div class="stat-card"><strong id="careerGA">1,359</strong><span>GOAL CONTRIBUTIONS</span><small>Goals + assists</small></div>
+    </div>
+
+    <div class="grid-3" style="margin-top:15px">
+      <div class="card"><div class="eyebrow">GOALS / MATCH</div><div class="number">0.79</div><p>Career scoring rate in the reference snapshot.</p></div>
+      <div class="card"><div class="eyebrow">ASSISTS / MATCH</div><div class="number">0.36</div><p>Assist definitions vary across statistical providers.</p></div>
+      <div class="card"><div class="eyebrow">CONTRIBUTIONS / MATCH</div><div class="number">1.15</div><p>Combined goals and assists per appearance.</p></div>
+    </div>
+
+    <p class="note">
+      Before publishing, verify the totals against a single source and update the
+      values together. The figures above are a snapshot from the previously assembled
+      draft and should not be treated as guaranteed current totals.
+    </p>
+  </div>
+</section>
+
+<!-- CLUB BREAKDOWN -->
+<section class="section dark-section">
+  <div class="container">
+    <div class="center">
+      <div class="eyebrow">EVERY CHAPTER MATTERS</div>
+      <h2 class="section-title">THE CLUB <span class="gold">JOURNEY</span></h2>
+      <p class="section-intro">Four chapters in the story of an extraordinary career.</p>
+    </div>
+
+    <div class="grid-2">
+      <article class="card">
+        <div class="eyebrow">2004–2021</div>
+        <h3>🔵🔴 FC Barcelona</h3>
+        <div class="number">672</div>
+        <p>Official first-team goals commonly credited to Messi at Barcelona.</p>
+        <div class="chips"><span class="chip">10× La Liga</span><span class="chip">4× UCL</span><span class="chip">7× Copa del Rey</span></div>
+      </article>
+      <article class="card">
+        <div class="eyebrow">2021–2023</div>
+        <h3>🔵🔴 Paris Saint-Germain</h3>
+        <div class="number">32</div>
+        <p>Goals in official competitions during his PSG spell, depending on source coverage.</p>
+        <div class="chips"><span class="chip">2× Ligue 1</span><span class="chip">Trophée des Champions</span></div>
+      </article>
+      <article class="card">
+        <div class="eyebrow">2023–</div>
+        <h3>🩷 Inter Miami</h3>
+        <div class="number">30</div>
+        <p>His Miami shirt number. Career statistics here are not automatically updated.</p>
+        <div class="chips"><span class="chip">MLS</span><span class="chip">Leagues Cup</span><span class="chip">Supporters' Shield</span></div>
+      </article>
+      <article class="card">
+        <div class="eyebrow">2005–</div>
+        <h3>🇦🇷 Argentina</h3>
+        <div class="number">10</div>
+        <p>Captain and number 10 of Argentina. International totals should be checked before publication.</p>
+        <div class="chips"><span class="chip">World Cup 2022</span><span class="chip">Copa América</span><span class="chip">Olympic Gold</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER TIMELINE -->
+<section class="section" id="career">
+  <div class="container">
+    <div class="center">
+      <div class="eyebrow">FROM ROSARIO TO HISTORY</div>
+      <h2 class="section-title">A LEGACY <span class="gold">IN TIME</span></h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item"><strong>2004 · Barcelona debut</strong><p>A teenage talent begins his first-team journey.</p></div>
+      <div class="timeline-item"><strong>2005 · First senior Argentina goal</strong><p>The international chapter of his story takes shape.</p></div>
+      <div class="timeline-item"><strong>2009 · First Ballon d'Or</strong><p>The world recognises a generational talent.</p></div>
+      <div class="timeline-item"><strong>2012 · Historic scoring year</strong><p>Messi scores 91 official goals during the calendar year, according to the widely recognised record.</p></div>
+      <div class="timeline-item"><strong>2021 · Copa América champion</strong><p>Argentina win the continental title in Brazil.</p></div>
+      <div class="timeline-item"><strong>2022 · World Cup champion</strong><p>Argentina win the World Cup in Qatar; Messi receives the Golden Ball.</p></div>
+      <div class="timeline-item"><strong>2023 · Inter Miami chapter</strong><p>A new chapter begins in Major League Soccer.</p></div>
+      <div class="timeline-item"><strong>2024 · Copa América champion</strong><p>Argentina retain the continental crown.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SEASON STATISTICS -->
+<section class="section dark-section" id="seasons">
+  <div class="container">
+    <div class="center">
+      <div class="eyebrow">SEASON BY SEASON</div>
+      <h2 class="section-title">THE STATISTICS <span class="gold">ARCHIVE</span></h2>
+      <p class="section-intro">
+        Search seasons, sort by goals or appearances, and compare the figures in the table.
+      </p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card"><strong id="viewApps">—</strong><span>MATCHES IN VIEW</span></div>
+      <div class="stat-card"><strong id="viewGoals">—</strong><span>GOALS IN VIEW</span></div>
+      <div class="stat-card"><strong id="viewAssists">—</strong><span>ASSISTS IN VIEW</span></div>
+      <div class="stat-card"><strong id="viewRate">—</strong><span>GOALS / MATCH</span></div>
+    </div>
+
+    <div class="table-controls">
+      <input id="seasonSearch" type="search" placeholder="Search season e.g. 2011-2012">
+      <select id="seasonSort" aria-label="Sort seasons">
+        <option value="new">Newest season first</option>
+        <option value="old">Oldest season first</option>
+        <option value="goals">Most goals first</option>
+        <option value="assists">Most assists first</option>
+        <option value="apps">Most appearances first</option>
+      </select>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>SEASON</th><th>APPS</th><th>W</th><th>D</th><th>L</th>
+            <th>GOALS</th><th>ASSISTS</th><th>G+A</th><th>G / GAME</th>
+            <th>YELLOW</th><th>RED</th><th>FREE KICKS</th>
+            <th>PENALTIES SCORED</th><th>PENALTIES MISSED</th>
+          </tr>
+        </thead>
+        <tbody id="seasonBody"></tbody>
+      </table>
+    </div>
+    <p class="note">
+      Important: the season rows are a draft dataset carried over from the earlier
+      version, not a verified statistical export. Some values may be inaccurate or
+      incomplete. Verify each season before publishing. A dash means data is not
+      supplied; it does not mean zero.
+    </p>
+  </div>
+</section>
+
+<!-- TOURNAMENTS -->
+<section class="section" id="trophies">
+  <div class="container">
+    <div class="center">
+      <div class="eyebrow">A CABINET FULL OF HISTORY</div>
+      <h2 class="section-title">TROPHIES & <span class="gold">HONOURS</span></h2>
+      <p class="section-intro">Major team honours and individual awards from Messi's career.</p>
+    </div>
+
+    <h3>Major team honours</h3>
+    <div class="trophy-grid">
+      <div class="trophy-card"><div class="trophy-icon">🏆</div><strong>4</strong><span>UEFA Champions League</span></div>
+      <div class="trophy-card"><div class="trophy-icon">🇪🇸</div><strong>10</strong><span>La Liga titles</span></div>
+      <div class="trophy-card"><div class="trophy-icon">🌍</div><strong>1</strong><span>FIFA World Cup</span></div>
+      <div class="trophy-card"><div class="trophy-icon">🇦🇷</div><strong>2</strong><span>Copa América titles</span></div>
+      <div class="trophy-card"><div class="trophy-icon">🥇</div><strong>1</strong><span>Olympic gold medal</span></div>
+      <div class="trophy-card"><div class="trophy-icon">⭐</div><strong>1</strong><span>FIFA U-20 World Cup</span></div>
+      <div class="trophy-card"><div class="trophy-icon">🇫🇷</div><strong>2</strong><span>Ligue 1 titles</span></div>
+      <div class="trophy-card"><div class="trophy-icon">🩷</div><strong>—</strong><span>Miami honours: verify current total</span></div>
+    </div>
+
+    <h3 style="margin-top:38px">Individual awards</h3>
+    <div class="chips">
+      <span class="chip">8× Ballon d'Or</span>
+      <span class="chip">6× European Golden Shoe</span>
+      <span class="chip">2022 World Cup Golden Ball</span>
+      <span class="chip">2009 FIFA World Player of the Year</span>
+      <span class="chip">2021 Copa América Best Player</span>
+      <span class="chip">2021 Copa América top scorer</span>
+      <span class="chip">Multiple league top-scorer awards</span>
+      <span class="chip">Multiple Champions League records</span>
+    </div>
+    <p class="note">Award counts and club honours should be rechecked before public release.</p>
+  </div>
+</section>
+
+<!-- RECORDS -->
+<section class="section dark-section" id="records">
+  <div class="container">
+    <div class="center">
+      <div class="eyebrow">NUMBERS THAT MADE HISTORY</div>
+      <h2 class="section-title">THE <span class="gold">RECORDS</span></h2>
+      <p class="section-intro">Some of the most celebrated milestones of Messi's career.</p>
+    </div>
+
+    <div class="records-grid">
+      <div class="record-card"><strong>91</strong><span>Official goals in the calendar year 2012</span></div>
+      <div class="record-card"><strong>672</strong><span>Official Barcelona goals</span></div>
+      <div class="record-card"><strong>474</strong><span>La Liga goals</span></div>
+      <div class="record-card"><strong>8</strong><span>Ballon d'Or awards</span></div>
+      <div class="record-card"><strong>50</strong><span>La Liga goals in the 2011–12 season</span></div>
+      <div class="record-card"><strong>26</strong><span>World Cup appearances across five tournaments</span></div>
+      <div class="record-card"><strong>13</strong><span>World Cup goals</span></div>
+      <div class="record-card"><strong>2</strong><span>World Cup Golden Ball awards</span></div>
+      <div class="record-card"><strong>2008</strong><span>Olympic football gold with Argentina</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXTRA STATS CATEGORIES -->
+<section class="section">
+  <div class="container">
+    <div class="center">
+      <div class="eyebrow">EVERY DETAIL COUNTS</div>
+      <h2 class="section-title">MORE CAREER <span class="gold">DATA</span></h2>
+      <p class="section-intro">
+        These are important football statistics, but their career totals need a
+        consistent source before exact numbers are displayed.
+      </p>
+    </div>
+    <div class="grid-3">
+      <div class="card"><h3>⚽ Scoring</h3><div class="chips"><span class="chip">Right-foot goals</span><span class="chip">Left-foot goals</span><span class="chip">Headers</span><span class="chip">Free-kick goals</span><span class="chip">Penalty goals</span><span class="chip">Hat-tricks</span></div></div>
+      <div class="card"><h3>🎯 Creativity</h3><div class="chips"><span class="chip">Assists</span><span class="chip">Chances created</span><span class="chip">Key passes</span><span class="chip">Through balls</span><span class="chip">Successful dribbles</span></div></div>
+      <div class="card"><h3>📊 Match data</h3><div class="chips"><span class="chip">Minutes played</span><span class="chip">Starts</span><span class="chip">Sub appearances</span><span class="chip">Wins</span><span class="chip">Draws</span><span class="chip">Losses</span><span class="chip">Yellow cards</span><span class="chip">Red cards</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MUSIC -->
+<section class="section dark-section" id="music">
+  <div class="container">
+    <div class="music-box">
+      <div>
+        <div class="eyebrow">THE SOUNDTRACK</div>
+        <h2 style="margin:6px 0">PHONK <span class="gold">MODE</span></h2>
+        <p>Put your licensed MP3 file named <strong>phonk.mp3</strong> in the same folder as this HTML file.</p>
+        <p id="musicStatus" aria-live="polite">Music ready when you are.</p>
+      </div>
+      <div class="music-controls">
+        <button class="btn filled" id="playMusic" type="button">▶ PLAY</button>
+        <button class="btn" id="pauseMusic" type="button">Ⅱ PAUSE</button>
+      </div>
+    </div>
+    <audio id="bgMusic" src="phonk.mp3" loop preload="none"></audio>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div><strong class="gold">MESSI.</strong> A fan-made tribute website.</div>
+    <div>Not affiliated with Lionel Messi, Inter Miami, FC Barcelona or FIFA.</div>
+    <div>For official career information, consult reputable statistical sources.</div>
+  </div>
+</footer>
+
+<button class="back-top" type="button" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+/*
+  SEASON DATA:
+  Columns:
+  season, appearances, wins, draws, losses, goals, assists,
+  yellow cards, red cards, free-kick goals, penalties scored, penalties missed.
+
+  This is a draft/reference dataset, not a verified statistical export.
+  Replace values with a verified, consistently sourced dataset before publishing.
+*/
+const seasonData = [
+ ["2026-2027",14,null,null,null,13,8,null,null,1,4,1],
+ ["2025-2026",55,null,null,null,53,34,null,null,3,4,4],
+ ["2024-2025",43,null,null,null,29,10,null,null,0,6,1],
+ ["2023-2024",38,null,null,null,30,18,null,null,0,3,1],
+ ["2022-2023",54,null,null,null,38,25,null,null,1,4,5],
+ ["2021-2022",45,null,null,null,21,16,null,null,1,0,3],
+ ["2020-2021",60,null,null,null,44,17,null,null,3,5,10],
+ ["2019-2020",46,null,null,null,33,26,null,null,1,5,6],
+ ["2018-2019",58,null,null,null,54,20,null,null,1,8,6],
+ ["2017-2018",64,null,null,null,52,21,null,null,4,7,4],
+ ["2016-2017",57,null,null,null,57,18,null,null,1,5,10],
+ ["2015-2016",59,null,null,null,50,27,null,null,3,9,5],
+ ["2014-2015",67,null,null,null,62,31,null,null,4,2,8],
+ ["2013-2014",57,null,null,null,48,16,null,null,2,4,10],
+ ["2012-2013",62,null,null,null,69,18,null,null,1,6,7],
+ ["2011-2012",69,null,null,null,82,34,null,null,3,3,15],
+ ["2010-2011",66,null,null,null,57,29,null,null,2,1,6],
+ ["2009-2010",64,null,null,null,48,12,null,null,0,2,3],
+ ["2008-2009",60,null,null,null,41,19,null,null,2,1,4],
+ ["2007-2008",50,null,null,null,19,16,null,null,1,0,5],
+ ["2006-2007",46,null,null,null,21,5,null,null,0,0,1],
+ ["2005-2006",35,null,null,null,10,6,null,null,0,0,0],
+ ["2004-2005",9,null,null,null,1,0,null,null,0,0,0]
+];
+
+const body = document.getElementById("seasonBody");
+const searchInput = document.getElementById("seasonSearch");
+const sortSelect = document.getElementById("seasonSort");
+
+function displayNumber(value) {
+  return value === null || value === undefined ? "—" : value;
+}
+
+function renderSeasons() {
+  const query = searchInput.value.trim().toLowerCase();
+  let rows = seasonData.filter(row => row[0].toLowerCase().includes(query));
+
+  if (sortSelect.value === "old") rows.sort((a,b) => a[0].localeCompare(b[0]));
+  if (sortSelect.value === "new") rows.sort((a,b) => b[0].localeCompare(a[0]));
+  if (sortSelect.value === "goals") rows.sort((a,b) => (b[5] ?? -1)-(a[5] ?? -1));
+  if (sortSelect.value === "assists") rows.sort((a,b) => (b[6] ?? -1)-(a[6] ?? -1));
+  if (sortSelect.value === "apps") rows.sort((a,b) => (b[1] ?? -1)-(a[1] ?? -1));
+
+  body.innerHTML = rows.map(row => {
+    const ga = row[5] == null || row[6] == null ? null : row[5] + row[6];
+    const rate = row[1] && row[5] != null ? (row[5] / row[1]).toFixed(2) : null;
+    return `<tr>
+      <td>${row[0]}</td>
+      <td>${displayNumber(row[1])}</td>
+      <td>${displayNumber(row[2])}</td>
+      <td>${displayNumber(row[3])}</td>
+      <td>${displayNumber(row[4])}</td>
+      <td>${displayNumber(row[5])}</td>
+      <td>${displayNumber(row[6])}</td>
+      <td>${displayNumber(ga)}</td>
+      <td>${displayNumber(rate)}</td>
+      <td>${displayNumber(row[7])}</td>
+      <td>${displayNumber(row[8])}</td>
+      <td>${displayNumber(row[9])}</td>
+      <td>${displayNumber(row[10])}</td>
+      <td>${displayNumber(row[11])}</td>
+    </tr>`;
+  }).join("");
+
+  const totals = rows.reduce((acc,row) => {
+    if (row[1] != null) acc.apps += row[1];
+    if (row[5] != null) acc.goals += row[5];
+    if (row[6] != null) acc.assists += row[6];
+    return acc;
+  }, {apps:0,goals:0,assists:0});
+
+  document.getElementById("viewApps").textContent = totals.apps.toLocaleString();
+  document.getElementById("viewGoals").textContent = totals.goals.toLocaleString();
+  document.getElementById("viewAssists").textContent = totals.assists.toLocaleString();
+  document.getElementById("viewRate").textContent =
+    totals.apps ? (totals.goals / totals.apps).toFixed(2) : "0.00";
+}
+
+searchInput.addEventListener("input", renderSeasons);
+sortSelect.addEventListener("change", renderSeasons);
+renderSeasons();
+
+/* MUSIC CONTROLS */
+const music = document.getElementById("bgMusic");
+const musicStatus = document.getElementById("musicStatus");
+
+async function startMusic() {
+  try {
+    await music.play();
+    musicStatus.textContent = "Phonk is playing. Enjoy the vibe.";
+  } catch (error) {
+    musicStatus.textContent =
+      "Could not play music. Check that phonk.mp3 is uploaded beside index.html.";
+  }
+}
+function stopMusic() {
+  music.pause();
+  musicStatus.textContent = "Music paused.";
+}
+
+document.getElementById("playMusic").addEventListener("click", startMusic);
+document.getElementById("pauseMusic").addEventListener("click", stopMusic);
+document.getElementById("heroMusicBtn").addEventListener("click", startMusic);
+
+music.addEventListener("error", () => {
+  musicStatus.textContent =
+    "Music file not found. Upload phonk.mp3 to the same repository folder.";
+});
+</script>
+</body>
+</html>
